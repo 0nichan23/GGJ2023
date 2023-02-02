@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c31a45fa570ce124288dbd6dd6e1096b
+=======
+guid: 22711495e71f1974e84ff1a6e54d9c90
+>>>>>>> enemies-scene
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
