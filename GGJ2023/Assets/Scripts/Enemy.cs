@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public float gravity;
     public float attackSpeed;
     public float damage;
+    public float legsHeight;
     
     private Root targetRoot;
     private float yVelocity;
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
     {
         var positionDifference = targetRoot.transform.position - transform.position;
         var xDirection = Mathf.Sign(positionDifference.x);
-        var isOnGround = transform.IsOnGround();
+        var isOnGround = transform.IsOnGround(legsHeight);
         if (!isOnGround)
             yVelocity -= gravity;
         else

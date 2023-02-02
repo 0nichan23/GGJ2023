@@ -8,8 +8,9 @@ public static class Utils
     public static T GetRandom<T>(this IEnumerable<T> ts)
         => ts.ElementAt(Random.Range(0, ts.Count()));
 
-    public static bool IsOnGround(this Transform t)
+    public static bool IsOnGround(this Transform t, float legsHeight = 1)
     {
-        throw new System.Exception("not implemented");
+        var hit = Physics2D.Raycast(t.position, Vector2.down, legsHeight);
+        return hit.collider != null;
     }
 }
