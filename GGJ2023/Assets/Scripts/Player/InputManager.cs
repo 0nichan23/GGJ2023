@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
         actionMap.Enable();
 
         actionMap.BasicActions.Jump.started += InvokeOnJumpDown;
+        actionMap.BasicActions.Attack.started += InvokeOnAttackDown;
     }
 
     public void InvokeOnJumpDown(InputAction.CallbackContext obj)

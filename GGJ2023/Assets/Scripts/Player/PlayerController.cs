@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -7,6 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpHeight;
 
     [SerializeField] private SensorHolder groundCheck;
+    [SerializeField, Range(0,0.3f)] private float coyoteTime;
+
+    private bool coyoteAvailable;
+    private bool jumped;
 
     private Rigidbody2D rb;
 
@@ -16,6 +22,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GameManager.Instance.InputManager.OnJumpDown.AddListener(Jump);
+        groundCheck.OnNotGrounded.AddListener(StartCoyoteTime);
+        groundCheck.OnGrounded.AddListener(ResetJumped);
     }
 
     private void Update()
@@ -29,9 +37,10 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (groundCheck.IsGrounded())
+        if (groundCheck.IsGrounded() || coyoteAvailable)
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpHeight);
+            jumped = true;
         }
     }
     private void SetInputVelocity()
@@ -41,5 +50,25 @@ public class PlayerController : MonoBehaviour
     private void MoveController()
     {
         rb.velocity = new Vector2(baseVelocity.x * movementSpeed, rb.velocity.y);
+    }
+    private void ResetJumped()
+    {
+        jumped = false;
+    }
+
+    private void StartCoyoteTime()
+    {
+        if (jumped)
+        {
+            return;
+        }
+        StartCoroutine(CoyoteCounter());
+    }
+
+    private IEnumerator CoyoteCounter()
+    {
+        coyoteAvailable = true;
+        yield return new WaitForSecondsRealtime(coyoteTime);
+        coyoteAvailable = false;
     }
 }
