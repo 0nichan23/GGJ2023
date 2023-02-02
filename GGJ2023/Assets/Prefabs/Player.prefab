@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 26073230717537437}
   - component: {fileID: 26073230717537436}
   - component: {fileID: 26073230717537438}
+  - component: {fileID: 26073231578740499}
   - component: {fileID: 26073230717537434}
   - component: {fileID: 26073230717537432}
   m_Layer: 8
@@ -71,7 +72,7 @@ MonoBehaviour:
   movementSpeed: 15
   JumpHeight: 35
   groundCheck: {fileID: 26073231789088895}
-  coyoteTime: 0.3
+  coyoteTime: 0.1
 --- !u!114 &26073230717537437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +128,22 @@ MonoBehaviour:
   Ondeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &26073231578740499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26073230717537430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d72a38753226f747940f42a84eae44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 0.96
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!61 &26073230717537434
 BoxCollider2D:
   m_ObjectHideFlags: 0
