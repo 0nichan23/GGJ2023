@@ -6,9 +6,11 @@ public class PlayerWrapper : MonoBehaviour
     [SerializeField] private RigidbodyFlipper flipper;
     [SerializeField] private PlayerController controller;
     [SerializeField] private Damageable playerDamageable;
+    [SerializeField] private InteractableProximityDetector playerInteractableProximityDetector;
 
     public PlayerAttackHandler AttackHandler { get => attackHandler; }
     public RigidbodyFlipper Flipper { get => flipper; }
     public PlayerController Controller { get => controller; }
     public Damageable PlayerDamageable { get => playerDamageable; }
+    public InteractableProximityDetector PlayerInteractableProximityDetector { get => playerInteractableProximityDetector; }
 }

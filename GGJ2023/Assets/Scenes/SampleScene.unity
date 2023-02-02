@@ -932,7 +932,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 26073230717537439, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
   m_PrefabInstance: {fileID: 26073231578740497}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26073231578740498}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6910514f9d344e947a455993f954b504, type: 3}
@@ -1061,6 +1061,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAttackDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1932330070
@@ -1390,10 +1393,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 26073230717537433, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      propertyPath: coyoteTime
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 26073230717537435, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1441,29 +1440,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 26073230717537430, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 26073231578740499}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
---- !u!1 &26073231578740498 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 26073230717537430, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-  m_PrefabInstance: {fileID: 26073231578740497}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &26073231578740499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26073231578740498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d72a38753226f747940f42a84eae44f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkRadius: 0.96
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1024
