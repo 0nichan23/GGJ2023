@@ -19,7 +19,7 @@ public class SensorHolder : MonoBehaviour
         foreach (var item in sensors)
         {
             Vector3 relativePos = new Vector3(transform.position.x + item.Offset.x, transform.position.y + item.Offset.y);
-            if (!Physics.Raycast(relativePos, item.Direcion, item.Range, hitLayer))
+            if (!Physics2D.Raycast(relativePos, item.Direcion, item.Range, hitLayer))
             {
                 return false;
             }
@@ -32,7 +32,7 @@ public class SensorHolder : MonoBehaviour
         foreach (var item in sensors)
         {
             Vector3 relativePos = new Vector3(transform.position.x + item.Offset.x, transform.position.y + item.Offset.y);
-            if (Physics.Raycast(relativePos, item.Direcion, item.Range, hitLayer))
+            if (Physics2D.Raycast(relativePos, item.Direcion, item.Range, hitLayer))
             {
                 return true;
             }
@@ -43,7 +43,7 @@ public class SensorHolder : MonoBehaviour
     private bool IsSensorGrounded(GroundCheckSensor givenSensor)
     {
         Vector3 relativePos = new Vector3(transform.position.x + givenSensor.Offset.x, transform.position.y + givenSensor.Offset.y);
-        if (Physics.Raycast(relativePos, givenSensor.Direcion, givenSensor.Range, hitLayer))
+        if (Physics2D.Raycast(relativePos, givenSensor.Direcion, givenSensor.Range, hitLayer))
         {
             return true;
         }

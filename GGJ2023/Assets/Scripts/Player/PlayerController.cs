@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -33,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         if (groundCheck.IsGrounded())
         {
-            baseVelocity.y = JumpHeight;
+            rb.velocity = new Vector2(rb.velocity.x, JumpHeight);
         }
     }
     private void SetInputVelocity()
@@ -42,6 +40,6 @@ public class PlayerController : MonoBehaviour
     }
     private void MoveController()
     {
-        rb.velocity = baseVelocity * movementSpeed;
+        rb.velocity = new Vector2(baseVelocity.x * movementSpeed, rb.velocity.y);
     }
 }
