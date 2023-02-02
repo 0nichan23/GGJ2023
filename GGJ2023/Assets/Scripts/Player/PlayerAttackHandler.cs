@@ -6,6 +6,7 @@ public class PlayerAttackHandler : MonoBehaviour
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackRadius;
     [SerializeField] private float attackPositionOffset;
+    [SerializeField] private LayerMask attackLayer;
     private bool canAttack;
 
     private float lastAttacked;
@@ -32,6 +33,24 @@ public class PlayerAttackHandler : MonoBehaviour
         }
         Debug.Log("Attacking");
         lastAttacked = Time.time;
+        Collider2D[] foundColliders;
+        if (GameManager.Instance.PlayerWrapper.Flipper.LookingRight)
+        {
+            foundColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + attackPositionOffset, transform.position.y), attackRadius, attackLayer);
+            ParticleEvents particle = GameManager.Instance.PlayerAttackObjectPool.GetPooledObject();
+            particle.gameObject.SetActive(true);
+            particle.transform.position = new Vector2(transform.position.x + attackPositionOffset, transform.position.y);
+        }
+        else
+        {
+            foundColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x - attackPositionOffset, transform.position.y), attackRadius, attackLayer);
+            ParticleEvents particle = GameManager.Instance.PlayerAttackObjectPool.GetPooledObject();
+            particle.gameObject.SetActive(true);
+            particle.transform.position = new Vector2(transform.position.x - attackPositionOffset, transform.position.y);
+        }
+
+        
+
     }
 
 
