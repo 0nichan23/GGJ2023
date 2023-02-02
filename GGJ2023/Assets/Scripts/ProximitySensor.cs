@@ -8,7 +8,7 @@ public class ProximitySensor<T> : MonoBehaviour where T : MonoBehaviour
 
     public T[] GetTargetsInProximity()//without line of sight
     {
-        Collider[] foundColliders = Physics.OverlapSphere(transform.position, checkRadius, targetLayer);
+        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(transform.position, checkRadius, targetLayer);
         List<T> foundObjects = new List<T>();
         foreach (var item in foundColliders)
         {
@@ -32,11 +32,15 @@ public class ProximitySensor<T> : MonoBehaviour where T : MonoBehaviour
         foreach (var item in targets)
         {
             Vector2 dir = item.transform.position - transform.position;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir);
-            if (!ReferenceEquals(hit,null) && item.transform.position == hit.collider.transform.position)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, checkRadius, targetLayer);
+            if (!ReferenceEquals(hit.collider, null))
             {
-                legalTargets.Add(item);
+                if (item.transform.position == hit.collider.transform.position)
+                {
+                    legalTargets.Add(item);
+                }
             }
+          
         }
         return legalTargets.ToArray();
     }
