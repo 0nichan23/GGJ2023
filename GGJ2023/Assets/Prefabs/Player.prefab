@@ -39,7 +39,7 @@ Transform:
   - {fileID: 26073231487157313}
   - {fileID: 26073231789088894}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &26073230717537439
 MonoBehaviour:
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCoolDown: 0.4
+  attackDamage: 10
   attackRadius: 0.7
   attackPositionOffset: 0.3
   healModifier: 10
@@ -372,7 +373,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 0379e67b0add5cf4883d97108a34418e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
