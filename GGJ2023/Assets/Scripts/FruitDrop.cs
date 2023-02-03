@@ -7,12 +7,13 @@ public class FruitDrop : Interactable
 
     public void CacheFruit(Fruit givenFruit)
     {
-        givenFruit.CachePlayer(GameManager.Instance.PlayerWrapper);
-        givenFruit.ActivateEffect();
+        Debug.Log("Cached player");
+        RefFruit = givenFruit;
+        RefFruit.CachePlayer(GameManager.Instance.PlayerWrapper);
     }
 
     public override void Interact()
     {
-        throw new System.NotImplementedException();
+        RefFruit.ActivateEffect();
     }
 }

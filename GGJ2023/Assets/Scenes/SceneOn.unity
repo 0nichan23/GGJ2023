@@ -1004,26 +1004,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 26073230717537437, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      propertyPath: attackDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 26073230717537437, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      propertyPath: attackCoolDown
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 26073231789088895, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      propertyPath: sensors.Array.data[0].Range
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 26073231789088895, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      propertyPath: sensors.Array.data[1].Range
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 26073231789088895, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
-      propertyPath: sensors.Array.data[2].Range
-      value: 0.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -29,7 +29,6 @@ public class FruitManager : MonoBehaviour
         FruitDrop fruit = Instantiate(GameManager.Instance.FruitDropOP.GetPooledObject(), spawnPosition.position, Quaternion.identity);
         fruit.CacheFruit(GetFruitFromEnum(GetRandomFruit()));
         fruit.gameObject.SetActive(true);
-        GetFruitFromEnum(GetRandomFruit());
     }
 
     private void UpdateTargetTime()
