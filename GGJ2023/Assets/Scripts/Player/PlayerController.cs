@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Transform gfx;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float JumpHeight;
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         SetInputVelocity();
+        RoatatePlayerGFXToMatchGround();
     }
     private void FixedUpdate()
     {
@@ -66,6 +68,12 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(CoyoteCounter());
     }
 
+    private void RoatatePlayerGFXToMatchGround()
+    {
+        var normal = groundCheck.GetNormalFromSensor(groundCheck.CenterSensor);
+        var rotationDifference = Quaternion.FromToRotation(Vector3.up, normal);
+        gfx.rotation = rotationDifference;
+    }
 
     private void StartMoveDown()
     {
@@ -86,7 +94,10 @@ public class PlayerController : MonoBehaviour
         }
         foreach (var item in givenColliders)
         {
-            item.isTrigger = true;
+            if (item.gameObject.CompareTag("Platform"))
+            {
+                item.isTrigger = true;
+            }
         }
         yield return new WaitUntil(() => transform.position.y < givenColliders[0].bounds.min.y);
         foreach (var item in givenColliders)

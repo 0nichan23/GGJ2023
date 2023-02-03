@@ -20,15 +20,15 @@ public class RigidbodyFlipper : MonoBehaviour
 
     private IEnumerator WaitTillNegativeVelocity()
     {
-        yield return new WaitUntil(() => rb.velocity.x < 0);
-        transform.rotation = Quaternion.Euler(leftVector);
+        yield return new WaitUntil(() => rb.velocity.x < -0.1f);
+        transform.localScale = new Vector3(-1, 1, 1);
         lookingRight = false;
         StartCoroutine(WaitTillPositiveVelocity());
     }
     private IEnumerator WaitTillPositiveVelocity()
     {
-        yield return new WaitUntil(() => rb.velocity.x > 0);
-        transform.rotation = Quaternion.Euler(rightVector);
+        yield return new WaitUntil(() => rb.velocity.x > 0.1f);
+        transform.localScale = new Vector3(1, 1, 1);
         lookingRight = true;
         StartCoroutine(WaitTillNegativeVelocity());
     }

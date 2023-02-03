@@ -7,15 +7,18 @@ public class SensorHolder : MonoBehaviour
 {
     [SerializeField] List<GroundCheckSensor> sensors = new List<GroundCheckSensor>();
     [SerializeField] LayerMask hitLayer;
+    private GroundCheckSensor centerSensor;
 
     public UnityEvent OnGrounded;
     public UnityEvent OnNotGrounded;
 
     public List<GroundCheckSensor> Sensors { get => sensors; }
+    public GroundCheckSensor CenterSensor { get => centerSensor; }
 
     private void Start()
     {
         StartCoroutine(WaitForGrounded());
+        centerSensor = sensors[0];
     }
     public bool IsAllGrounded()
     {
@@ -63,6 +66,21 @@ public class SensorHolder : MonoBehaviour
         return null;
     }
 
+    public Vector2 GetNormalFromSensor(GroundCheckSensor givenSensor)
+    {
+        if (IsSensorGrounded(givenSensor))
+        {
+            Vector3 relativePos = new Vector3(transform.position.x + givenSensor.Offset.x, transform.position.y + givenSensor.Offset.y);
+            RaycastHit2D hit = Physics2D.Raycast(relativePos, givenSensor.Direcion, givenSensor.Range, hitLayer);
+            if (hit)
+            {
+                return hit.normal;
+            }
+        }
+        return Vector2.zero;
+
+
+    }
     public Collider2D[] GetAllColliders()
     {
         List<Collider2D> groundedColliders = new List<Collider2D>();
