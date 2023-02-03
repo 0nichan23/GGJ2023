@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a461625a77919d4cbdf405202159e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gfx: {fileID: 0}
   movementSpeed: 15
   JumpHeight: 35
   groundCheck: {fileID: 26073231789088895}
@@ -86,14 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651c49226e34216428c209c6200e5df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
   attackCoolDown: 0.4
   attackRadius: 0.89
   attackPositionOffset: 1.38
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  attackParticle: {fileID: 4064573104451442190}
+  healModifier: 0
 --- !u!114 &26073230717537436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightVector: {x: 0, y: 0}
   leftVector: {x: 0, y: 180}
+  lookingRight: 0
 --- !u!114 &26073231578740499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +310,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 8
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -460,7 +458,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.9245283, g: 0.19537197, b: 0.19537197, a: 1}
   m_FlipX: 0
@@ -553,11 +551,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e2f2d9c0a40f94ba7e56c53b7f2ccc, type: 3}
---- !u!198 &4064573104451442190 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198220203427489738, guid: 25e2f2d9c0a40f94ba7e56c53b7f2ccc, type: 3}
-  m_PrefabInstance: {fileID: 4226764098407674308}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4231423199500728700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4912027501906104, guid: 25e2f2d9c0a40f94ba7e56c53b7f2ccc, type: 3}
