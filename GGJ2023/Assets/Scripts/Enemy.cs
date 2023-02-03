@@ -82,9 +82,9 @@ public class Enemy : MonoBehaviour
 
     public void Explode()
     {
-        explosionParticle.Play();
-        explosionParticle.transform.parent = null;
-        Destroy(explosionParticle, explosionParticle.main.duration);
+        //explosionParticle.Play();
+        //explosionParticle.transform.parent = null;
+        //Destroy(explosionParticle, explosionParticle.main.duration);
         Destroy(gameObject);
     }
 

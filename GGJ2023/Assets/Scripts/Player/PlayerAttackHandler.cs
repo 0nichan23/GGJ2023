@@ -25,7 +25,7 @@ public class PlayerAttackHandler : MonoBehaviour
         Collider2D[] foundColliders;
         var attackCenter = transform.position;
 
-        if (GetComponent<RigidbodyFlipper>().lookingRight)
+        if (GameManager.Instance.PlayerWrapper.Flipper.lookingRight)
             attackCenter += Vector3.right * attackPositionOffset;
         else
             attackCenter += Vector3.left * attackPositionOffset;
@@ -34,15 +34,22 @@ public class PlayerAttackHandler : MonoBehaviour
 
         if (GameManager.Instance.currentDimension == GameManager.Dimensions.Attack)
         {
-            var enemyColliders = foundColliders.Where(c => c.Is<Enemy>());
-            foreach (var enemyCollider in enemyColliders)
+            foreach (var enemyCollider in foundColliders)
             {
                 var enemy = enemyCollider.GetComponent<Enemy>();
+                if (ReferenceEquals(enemy, null))
+                {
+                    continue;
+                }
                 enemy.Explode();
             }
         }
-        else
+        ParticleEvents particle = GameManager.Instance.AttackParticleOP.GetPooledObject();
+        particle.transform.position = attackCenter;
+        particle.gameObject.SetActive(true);
+       /* else
         {
+            //hold function
             var rootColliders = foundColliders.Where(c => c.Is<Root>());
             foreach (var rootCollider in rootColliders)
             {
@@ -57,7 +64,7 @@ public class PlayerAttackHandler : MonoBehaviour
         if (distanceToTotem < attackRadius)
         {
             GameManager.Instance.ToggleDimension();
-        }
+        }*/
     }
 
 
