@@ -13,4 +13,10 @@ public static class Utils
         var hit = Physics2D.Raycast(t.position, Vector2.down, legsHeight);
         return hit.collider != null;
     }
+
+    public static float CalcRange(Vector3 pointA, Vector3 pointB)
+    {
+        return (pointA - pointB).magnitude;
+    }
+
 }
