@@ -17,7 +17,9 @@ public class Enemy : MonoBehaviour
     public float attackSpeed;
     public float damage;
     public float legsHeight;
-    
+    public LayerMask groundLayerMask;
+    public ParticleSystem explosionParticle;
+
     [HideInInspector] public Root targetRoot;
     private float yVelocity;
     private float timeLeftToAttack;
@@ -27,6 +29,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         enemyState = EnemyState.Walking;
+        if (GameManager.Instance.currentDimension == GameManager.Dimensions.Heal)
+            Hide();
     }
 
 
@@ -39,9 +43,12 @@ public class Enemy : MonoBehaviour
     }
     void Walk()
     {
+        if (targetRoot == null)
+            return;
+
         var positionDifference = targetRoot.transform.position - transform.position;
         var xDirection = Mathf.Sign(positionDifference.x);
-        var isOnGround = transform.IsOnGround(legsHeight);
+        var isOnGround = transform.IsOnGround(legsHeight, groundLayerMask);
         if (!isOnGround)
             yVelocity -= gravity;
         else
@@ -61,6 +68,9 @@ public class Enemy : MonoBehaviour
 
     void Attack()
     {
+        if (targetRoot == null)
+            return;
+
         timeLeftToAttack -= Time.deltaTime;
 
         if (timeLeftToAttack <= 0)
@@ -68,5 +78,22 @@ public class Enemy : MonoBehaviour
             targetRoot.health -= damage;
             timeLeftToAttack = attackSpeed;
         }
+    }
+
+    public void Explode()
+    {
+        explosionParticle.Play();
+        explosionParticle.transform.parent = null;
+        Destroy(explosionParticle, explosionParticle.main.duration);
+        Destroy(gameObject);
+    }
+
+    public void Hide()
+    {
+        GetComponent<Renderer>().enabled = false;
+    }
+    public void Reveal()
+    {
+        GetComponent<Renderer>().enabled = true;
     }
 }

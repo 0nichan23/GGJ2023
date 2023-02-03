@@ -1,56 +1,63 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayerAttackHandler : MonoBehaviour
 {
-    [SerializeField] private int attackDamage;
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackRadius;
     [SerializeField] private float attackPositionOffset;
-    [SerializeField] private LayerMask attackLayer;
-    private bool canAttack;
 
     private float lastAttacked;
-
-    public bool CanAttack { get => canAttack; set => canAttack = value; }
-
 
     private void Start()
     {
         GameManager.Instance.InputManager.OnAttackDown.AddListener(Attack);
-        CanAttack = true;
         lastAttacked = attackCoolDown * -1;
-    }
-    public void AddAttackDamage(int amount)
-    {
-        attackDamage += amount;
     }
 
     private void Attack()
     {
-        if (Time.time - lastAttacked < attackCoolDown || !CanAttack)
+        if (Time.time - lastAttacked < attackCoolDown)
         {
             return;
         }
-        Debug.Log("Attacking");
         lastAttacked = Time.time;
         Collider2D[] foundColliders;
-        if (GameManager.Instance.PlayerWrapper.Flipper.LookingRight)
+        var attackCenter = transform.position;
+
+        if (GetComponent<RigidbodyFlipper>().lookingRight)
+            attackCenter += Vector3.right * attackPositionOffset;
+        else
+            attackCenter += Vector3.left * attackPositionOffset;
+
+        foundColliders = Physics2D.OverlapCircleAll(attackCenter, attackRadius);
+
+        if (GameManager.Instance.currentDimension == GameManager.Dimensions.Attack)
         {
-            foundColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + attackPositionOffset, transform.position.y), attackRadius, attackLayer);
-            ParticleEvents particle = GameManager.Instance.PlayerAttackObjectPool.GetPooledObject();
-            particle.gameObject.SetActive(true);
-            particle.transform.position = new Vector2(transform.position.x + attackPositionOffset, transform.position.y);
+            var enemyColliders = foundColliders.Where(c => c.Is<Enemy>());
+            foreach (var enemyCollider in enemyColliders)
+            {
+                var enemy = enemyCollider.GetComponent<Enemy>();
+                enemy.Explode();
+            }
         }
         else
         {
-            foundColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x - attackPositionOffset, transform.position.y), attackRadius, attackLayer);
-            ParticleEvents particle = GameManager.Instance.PlayerAttackObjectPool.GetPooledObject();
-            particle.gameObject.SetActive(true);
-            particle.transform.position = new Vector2(transform.position.x - attackPositionOffset, transform.position.y);
+            var rootColliders = foundColliders.Where(c => c.Is<Root>());
+            foreach (var rootCollider in rootColliders)
+            {
+                var root = rootCollider.GetComponent<Root>();
+                root.Heal();
+            }
         }
 
-        
+        var totemPosition = GameManager.Instance.totem.transform.position;
+        var distanceToTotem = Utils.Distance(totemPosition, attackCenter);
 
+        if (distanceToTotem < attackRadius)
+        {
+            GameManager.Instance.ToggleDimension();
+        }
     }
 
 

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reachableRoots: []
   spawnedEnemyPrefab: {fileID: 2693023885291883735, guid: 941c7a3499cd84d45a37b7e3385d970d, type: 3}
-  spawnTime: 1
+  spawnTime: 10
   timeToSpawnBar: {fileID: 2246656138487195115}
   multiplyOverTime:
     serializedVersion: 2
@@ -108,17 +108,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.024339937
-      outSlope: -0.024339937
+      inSlope: -0.015
+      outSlope: -0.015
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 40.273975
-      value: 0.01973395
-      inSlope: -0.024339937
-      outSlope: -0.024339937
+      time: 60
+      value: 0.1
+      inSlope: -0.015
+      outSlope: -0.015
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

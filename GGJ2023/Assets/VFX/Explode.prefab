@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199968688341225798}
   - component: {fileID: -367521448037967639}
   m_Layer: 0
-  m_Name: PlayerAttackVFXTemp
+  m_Name: Explode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

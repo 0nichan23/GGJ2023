@@ -7,7 +7,7 @@ public class RigidbodyFlipper : MonoBehaviour
     [SerializeField] private Vector2 rightVector = Vector3.zero;
     [SerializeField] private Vector2 leftVector = new Vector3(0, 180, 0);
     private Rigidbody2D rb;
-    private bool lookingRight;
+    public bool lookingRight;
 
     public bool LookingRight { get => lookingRight; }
 

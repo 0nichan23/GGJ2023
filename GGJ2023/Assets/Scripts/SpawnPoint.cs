@@ -12,13 +12,13 @@ public class SpawnPoint : MonoBehaviour
 
     public ProgressBar timeToSpawnBar;
 
-    //public AnimationCurve multiplyOverTime;
+    public AnimationCurve multiplyOverTime;
 
     private float remainingTimeToSpawn;
 
     private void Start()
     {
-        remainingTimeToSpawn = spawnTime;
+        remainingTimeToSpawn = 0;
         timeToSpawnBar.maxProgress = spawnTime;
     }
 
@@ -29,7 +29,7 @@ public class SpawnPoint : MonoBehaviour
         if (remainingTimeToSpawn <= 0)
         {
             Spawn();
-            remainingTimeToSpawn = spawnTime;// * multiplyOverTime.Evaluate(Time.time);
+            remainingTimeToSpawn = spawnTime * multiplyOverTime.Evaluate(Time.time);
         }
         timeToSpawnBar.SetProgress(remainingTimeToSpawn);
     }
