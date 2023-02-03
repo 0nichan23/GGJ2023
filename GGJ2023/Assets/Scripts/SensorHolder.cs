@@ -10,6 +10,9 @@ public class SensorHolder : MonoBehaviour
 
     public UnityEvent OnGrounded;
     public UnityEvent OnNotGrounded;
+
+    public List<GroundCheckSensor> Sensors { get => sensors; }
+
     private void Start()
     {
         StartCoroutine(WaitForGrounded());
@@ -48,6 +51,29 @@ public class SensorHolder : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public Collider2D GetGroundFromSensor(GroundCheckSensor givenSensor)
+    {
+        Vector3 relativePos = new Vector3(transform.position.x + givenSensor.Offset.x, transform.position.y + givenSensor.Offset.y);
+        RaycastHit2D hit = Physics2D.Raycast(relativePos, givenSensor.Direcion, givenSensor.Range, hitLayer);
+        if (hit)
+        {
+            return hit.collider;
+        }
+        return null;
+    }
+
+    public Collider2D[] GetAllColliders()
+    {
+        List<Collider2D> groundedColliders = new List<Collider2D>();
+        foreach (var item in sensors)
+        {
+            if (!ReferenceEquals(GetGroundFromSensor(item), null))
+            {
+                groundedColliders.Add(GetGroundFromSensor(item));
+            }
+        }
+        return groundedColliders.ToArray();
     }
 
     IEnumerator WaitForGrounded()

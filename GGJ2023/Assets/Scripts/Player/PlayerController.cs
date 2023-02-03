@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GameManager.Instance.InputManager.OnJumpDown.AddListener(Jump);
+        GameManager.Instance.InputManager.OnStepDownDown.AddListener(StartMoveDown);
         groundCheck.OnNotGrounded.AddListener(StartCoyoteTime);
         groundCheck.OnGrounded.AddListener(ResetJumped);
     }
@@ -65,10 +66,33 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(CoyoteCounter());
     }
 
+
+    private void StartMoveDown()
+    {
+        StartCoroutine(MoveDownCounter(groundCheck.GetAllColliders()));
+    }
+
     private IEnumerator CoyoteCounter()
     {
         coyoteAvailable = true;
         yield return new WaitForSecondsRealtime(coyoteTime);
         coyoteAvailable = false;
+    }
+    private IEnumerator MoveDownCounter(Collider2D[] givenColliders)
+    {
+        if (givenColliders.Length <= 0)
+        {
+            yield break;
+        }
+        foreach (var item in givenColliders)
+        {
+            item.isTrigger = true;
+        }
+        yield return new WaitUntil(() => transform.position.y < givenColliders[0].bounds.min.y);
+        foreach (var item in givenColliders)
+        {
+            item.isTrigger = false;
+        }
+
     }
 }

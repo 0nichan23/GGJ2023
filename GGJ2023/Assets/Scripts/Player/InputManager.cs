@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnJumpDown;
     public UnityEvent OnAttackDown;
     public UnityEvent OnInteractDown;
+    public UnityEvent OnInteractUp;
+    public UnityEvent OnStepDownDown;
 
 
     private void Start()
@@ -21,8 +23,13 @@ public class InputManager : MonoBehaviour
         actionMap.BasicActions.Jump.started += InvokeOnJumpDown;
         actionMap.BasicActions.Attack.started += InvokeOnAttackDown;
         actionMap.BasicActions.Interact.started += InvokeOnInteractDown;
+        actionMap.BasicActions.Interact.canceled += InvokeOnInteractUp;
+        actionMap.BasicActions.MoveDown.started += InvokeOnStepDownDown;
     }
-
+    public void InvokeOnStepDownDown(InputAction.CallbackContext obj)
+    {
+        OnStepDownDown?.Invoke();
+    }
     public void InvokeOnJumpDown(InputAction.CallbackContext obj)
     {
         OnJumpDown?.Invoke();
@@ -30,6 +37,10 @@ public class InputManager : MonoBehaviour
     public void InvokeOnInteractDown(InputAction.CallbackContext obj)
     {
         OnInteractDown?.Invoke();
+    }
+    public void InvokeOnInteractUp(InputAction.CallbackContext obj)
+    {
+        OnInteractUp?.Invoke();
     }
 
     public void InvokeOnAttackDown(InputAction.CallbackContext obj)

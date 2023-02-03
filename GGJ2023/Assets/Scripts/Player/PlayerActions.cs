@@ -62,6 +62,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""07d1516f-9038-45a5-9420-83f04584edde"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,17 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd46df67-4100-45b4-80be-50f2278862cd"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +250,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_BasicActions_Attack = m_BasicActions.FindAction("Attack", throwIfNotFound: true);
         m_BasicActions_Jump = m_BasicActions.FindAction("Jump", throwIfNotFound: true);
         m_BasicActions_Interact = m_BasicActions.FindAction("Interact", throwIfNotFound: true);
+        m_BasicActions_MoveDown = m_BasicActions.FindAction("MoveDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_BasicActions_Attack;
     private readonly InputAction m_BasicActions_Jump;
     private readonly InputAction m_BasicActions_Interact;
+    private readonly InputAction m_BasicActions_MoveDown;
     public struct BasicActionsActions
     {
         private @PlayerActions m_Wrapper;
@@ -301,6 +323,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_BasicActions_Attack;
         public InputAction @Jump => m_Wrapper.m_BasicActions_Jump;
         public InputAction @Interact => m_Wrapper.m_BasicActions_Interact;
+        public InputAction @MoveDown => m_Wrapper.m_BasicActions_MoveDown;
         public InputActionMap Get() { return m_Wrapper.m_BasicActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +345,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnInteract;
+                @MoveDown.started -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnMoveDown;
+                @MoveDown.performed -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnMoveDown;
+                @MoveDown.canceled -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnMoveDown;
             }
             m_Wrapper.m_BasicActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -338,6 +364,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @MoveDown.started += instance.OnMoveDown;
+                @MoveDown.performed += instance.OnMoveDown;
+                @MoveDown.canceled += instance.OnMoveDown;
             }
         }
     }
@@ -348,5 +377,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnMoveDown(InputAction.CallbackContext context);
     }
 }

@@ -11,9 +11,11 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private InputManager inputManager;
     [SerializeField] private PlayerWrapper playerWrapper;
     [SerializeField] private PlayerAttackEffectPool attackParticleOP;
+    [SerializeField] private EnemyDeathPool enemyDeathOP;
     public InputManager InputManager { get => inputManager; }
     public PlayerWrapper PlayerWrapper { get => playerWrapper; }
     public PlayerAttackEffectPool AttackParticleOP { get => attackParticleOP; }
+    public EnemyDeathPool EnemyDeathOP { get => enemyDeathOP; }
 
     public Dimensions currentDimension;
 
