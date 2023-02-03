@@ -7,6 +7,8 @@ public class PlayerAttackHandler : MonoBehaviour
     [SerializeField] private float attackRadius;
     [SerializeField] private float attackPositionOffset;
 
+    public float healModifier;
+
     private float lastAttacked;
 
     private void Start()
@@ -47,24 +49,6 @@ public class PlayerAttackHandler : MonoBehaviour
         ParticleEvents particle = GameManager.Instance.AttackParticleOP.GetPooledObject();
         particle.transform.position = attackCenter;
         particle.gameObject.SetActive(true);
-       /* else
-        {
-            //hold function
-            var rootColliders = foundColliders.Where(c => c.Is<Root>());
-            foreach (var rootCollider in rootColliders)
-            {
-                var root = rootCollider.GetComponent<Root>();
-                root.Heal();
-            }
-        }
-
-        var totemPosition = GameManager.Instance.totem.transform.position;
-        var distanceToTotem = Utils.Distance(totemPosition, attackCenter);
-
-        if (distanceToTotem < attackRadius)
-        {
-            GameManager.Instance.ToggleDimension();
-        }*/
     }
 
 
