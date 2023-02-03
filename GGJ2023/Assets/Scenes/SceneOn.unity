@@ -1012,6 +1012,18 @@ PrefabInstance:
       propertyPath: attackCoolDown
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 26073231789088895, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
+      propertyPath: sensors.Array.data[0].Range
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 26073231789088895, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
+      propertyPath: sensors.Array.data[1].Range
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 26073231789088895, guid: 6849a83032b8e8045a59e20390e6a925, type: 3}
+      propertyPath: sensors.Array.data[2].Range
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1039,17 +1051,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 681747036}
     - target: {fileID: 8165009417635379140, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
-      propertyPath: deathBG
-      value: 
-      objectReference: {fileID: 1230290860}
-    - target: {fileID: 8165009417635379140, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
       propertyPath: attackBG
       value: 
       objectReference: {fileID: 702730184}
-    - target: {fileID: 8165009417635379140, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
-      propertyPath: enemyDeathOP
-      value: 
-      objectReference: {fileID: 1238144624}
     - target: {fileID: 8165009417635379140, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
       propertyPath: playerWrapper
       value: 
@@ -1109,10 +1113,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1380409206, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1238144624}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
 --- !u!1 &1100632875
 GameObject:
@@ -1256,7 +1257,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -1348,26 +1349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1238144621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1380409206, guid: ffd614baf04f7cb44bbd1073095aec38, type: 3}
-  m_PrefabInstance: {fileID: 899651493}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1238144624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238144621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c4712eb5e4e354eb2d5ef06a7f0412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  PrefabToPool: {fileID: -7537801049396018232, guid: ff34886346782c74884574c9ee42e3c1, type: 3}
-  NumToPool: 5
 --- !u!4 &1244921287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2533256077431381966, guid: 217bc56f0a7bf01478f66139fd4bbf1a, type: 3}
@@ -1640,7 +1621,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -1795,7 +1776,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -2042,7 +2023,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -2594,7 +2575,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0

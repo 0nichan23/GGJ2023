@@ -12,6 +12,9 @@ public class PlayerAttackHandler : MonoBehaviour
 
     private float lastAttacked;
 
+    public int AttackDamage { get => attackDamage; set => attackDamage = value; }
+    public float AttackCoolDown { get => attackCoolDown; set => attackCoolDown = value; }
+
     private void Start()
     {
         GameManager.Instance.InputManager.OnAttackDown.AddListener(Attack);

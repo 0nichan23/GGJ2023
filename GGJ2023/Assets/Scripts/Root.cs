@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Root : Interactable
 {
@@ -11,9 +9,11 @@ public class Root : Interactable
     public ProgressBar healthBar;
 
     public ParticleSystem healParticles;
+    public UnityEvent<Root> OnDeath;
 
     [HideInInspector] public float health;
     private bool interactDown;
+
 
     private void Start()
     {
@@ -21,6 +21,8 @@ public class Root : Interactable
         healthBar.maxProgress = maxHealth;
         healthBar.SetProgress(health);
         GameManager.Instance.InputManager.OnInteractUp.AddListener(InteractUp);
+        GameManager.Instance.FruitManager.AddRoot(this);
+        OnDeath.AddListener(GameManager.Instance.FruitManager.RemoveRoot);
     }
 
     private void Update()
@@ -35,6 +37,7 @@ public class Root : Interactable
         if (health <= 0)
         {
             //Destroy(gameObject);
+            OnDeath?.Invoke(this);
             GameManager.Instance.GameOver();
         }
     }

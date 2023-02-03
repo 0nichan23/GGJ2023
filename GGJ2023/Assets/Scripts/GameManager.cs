@@ -13,10 +13,14 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private PlayerWrapper playerWrapper;
     [SerializeField] private PlayerAttackEffectPool attackParticleOP;
     [SerializeField] private EnemyDeathPool enemyDeathOP;
+    [SerializeField] private FruitObjectPool fruitDropOP;
+    [SerializeField] private FruitManager fruitManager;
     public InputManager InputManager { get => inputManager; }
     public PlayerWrapper PlayerWrapper { get => playerWrapper; }
     public PlayerAttackEffectPool AttackParticleOP { get => attackParticleOP; }
     public EnemyDeathPool EnemyDeathOP { get => enemyDeathOP; }
+    public FruitManager FruitManager { get => fruitManager; }
+    public FruitObjectPool FruitDropOP { get => fruitDropOP; }
 
     public Dimensions currentDimension;
 

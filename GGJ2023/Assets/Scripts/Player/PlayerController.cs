@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 baseVelocity;
 
+    public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();

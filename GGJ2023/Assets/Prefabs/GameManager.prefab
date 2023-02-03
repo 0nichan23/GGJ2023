@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &474845336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 474845337}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &474845337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474845336}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.79, y: 4.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586871688}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380409206
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1380409207}
   - component: {fileID: 1380409208}
+  - component: {fileID: 1238144624}
+  - component: {fileID: 1238144627}
   m_Layer: 0
   m_Name: ObjectPools
   m_TagString: Untagged
@@ -47,6 +80,83 @@ MonoBehaviour:
   pooledObjects: []
   PrefabToPool: {fileID: -367521448037967639, guid: 25e2f2d9c0a40f94ba7e56c53b7f2ccc, type: 3}
   NumToPool: 5
+--- !u!114 &1238144624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380409206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c4712eb5e4e354eb2d5ef06a7f0412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  PrefabToPool: {fileID: -7537801049396018232, guid: ff34886346782c74884574c9ee42e3c1, type: 3}
+  NumToPool: 5
+--- !u!114 &1238144627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380409206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e93042315078542aee254524e23172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  PrefabToPool: {fileID: 5955837860785993251, guid: ab4c525b400402646b92f5d63827b24f, type: 3}
+  NumToPool: 0
+--- !u!1 &1586871687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586871688}
+  - component: {fileID: 1586871689}
+  m_Layer: 0
+  m_Name: FruitManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586871688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586871687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 474845337}
+  m_Father: {fileID: 8165009417635379143}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586871689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586871687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9317efe73a5f41488b41fc9f628c410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roots: []
+  spawnPosition: {fileID: 474845337}
 --- !u!1 &8165009417635379141
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,8 +188,9 @@ Transform:
   m_Children:
   - {fileID: 8165009418554627563}
   - {fileID: 1380409207}
+  - {fileID: 1586871688}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8165009417635379140
 MonoBehaviour:
@@ -96,10 +207,14 @@ MonoBehaviour:
   inputManager: {fileID: 8165009418554627560}
   playerWrapper: {fileID: 0}
   attackParticleOP: {fileID: 1380409208}
+  enemyDeathOP: {fileID: 1238144624}
+  fruitDropOP: {fileID: 1238144627}
+  fruitManager: {fileID: 1586871689}
   currentDimension: 0
   healBG: {fileID: 0}
   attackBG: {fileID: 0}
-  deathBG: {fileID: 0}
+  deathScreen: {fileID: 0}
+  pauseMenu: {fileID: 0}
   totem: {fileID: 0}
   totemActivationParticles: {fileID: 0}
 --- !u!1 &8165009418554627561
@@ -146,12 +261,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2464317fdc499448963b6509093a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteractUp:
+    m_PersistentCalls:
+      m_Calls: []
   OnJumpDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractDown:
     m_PersistentCalls:
       m_Calls: []
   OnAttackDown:
     m_PersistentCalls:
       m_Calls: []
-  OnInteractDown:
+  OnStepDownDown:
+    m_PersistentCalls:
+      m_Calls: []
+  TogglePause:
     m_PersistentCalls:
       m_Calls: []
