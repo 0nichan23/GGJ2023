@@ -7,23 +7,20 @@ public class Root : MonoBehaviour
 
     public float size;
     public float maxHealth;
-    public Transform healthBar;
+    public ProgressBar healthBar;
 
     [HideInInspector] public float health;
-
-    private Vector2 initialHealthBarScale;
 
 
     private void Start()
     {
-        initialHealthBarScale = healthBar.transform.localScale;
-        health = maxHealth;
+        healthBar.maxProgress = maxHealth;
+        healthBar.SetProgress(health);
     }
 
     private void Update()
     {
-        var relativeHealth = health / maxHealth;
-        healthBar.transform.localScale = initialHealthBarScale * new Vector2(relativeHealth, 1);
+        healthBar.SetProgress(health);
     }
 
 }

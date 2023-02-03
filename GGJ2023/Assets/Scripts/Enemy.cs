@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float legsHeight;
     
-    private Root targetRoot;
+    [HideInInspector] public Root targetRoot;
     private float yVelocity;
     private float timeLeftToAttack;
 
@@ -26,11 +26,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        var spawnPoints = Object.FindObjectsOfType<SpawnPoint>();
-        var currentSpawnPoint = spawnPoints.GetRandom();
-        targetRoot = currentSpawnPoint.reachableRoots.GetRandom();
-        transform.position = currentSpawnPoint.transform.position;
-
         enemyState = EnemyState.Walking;
     }
 
