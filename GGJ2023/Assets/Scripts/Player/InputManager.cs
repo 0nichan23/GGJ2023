@@ -9,10 +9,10 @@ public class InputManager : MonoBehaviour
 {
     private PlayerActions actionMap;
 
-    public UnityEvent OnJumpDown;
-    public UnityEvent OnAttackDown;
-    public UnityEvent OnInteractDown;
     public UnityEvent OnInteractUp;
+    public UnityEvent OnJumpDown;
+    public UnityEvent OnInteractDown; 
+    public UnityEvent OnAttackDown;
     public UnityEvent OnStepDownDown;
 
 
