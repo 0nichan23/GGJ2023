@@ -8,13 +8,18 @@ public class SpawnPoint : MonoBehaviour
     public Root[] reachableRoots;
 
     public Enemy spawnedEnemyPrefab;
-    public float spawnSpeed;
+    public float spawnTime;
+
+    public ProgressBar timeToSpawnBar;
+
+    //public AnimationCurve multiplyOverTime;
 
     private float remainingTimeToSpawn;
 
     private void Start()
     {
-        remainingTimeToSpawn = spawnSpeed;
+        remainingTimeToSpawn = spawnTime;
+        timeToSpawnBar.maxProgress = spawnTime;
     }
 
     private void Update()
@@ -24,13 +29,15 @@ public class SpawnPoint : MonoBehaviour
         if (remainingTimeToSpawn <= 0)
         {
             Spawn();
-            remainingTimeToSpawn = spawnSpeed;
+            remainingTimeToSpawn = spawnTime;// * multiplyOverTime.Evaluate(Time.time);
         }
+        timeToSpawnBar.SetProgress(remainingTimeToSpawn);
     }
 
     private void Spawn()
     {
         var spawnedEnemy = Instantiate(spawnedEnemyPrefab, transform.position, Quaternion.identity);
+        spawnedEnemy.targetRoot = reachableRoots.GetRandom();
     }
 
 
