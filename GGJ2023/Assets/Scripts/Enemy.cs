@@ -115,6 +115,9 @@ public class Enemy : MonoBehaviour
         //explosionParticle.Play();
         //explosionParticle.transform.parent = null;
         //Destroy(explosionParticle, explosionParticle.main.duration);
+        ParticleEvents particle =  GameManager.Instance.EnemyDeathOP.GetPooledObject();
+        particle.transform.position = transform.position;
+        particle.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 

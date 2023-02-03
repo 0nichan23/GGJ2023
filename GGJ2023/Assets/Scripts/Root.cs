@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Root : MonoBehaviour
+public class Root : Interactable
 {
 
     public float size;
@@ -13,17 +13,24 @@ public class Root : MonoBehaviour
     public ParticleSystem healParticles;
 
     [HideInInspector] public float health;
-
+    private bool interactDown;
 
     private void Start()
     {
         health = maxHealth;
         healthBar.maxProgress = maxHealth;
         healthBar.SetProgress(health);
+        GameManager.Instance.InputManager.OnInteractUp.AddListener(InteractUp);
     }
 
     private void Update()
     {
+        if (interactDown)
+        {
+            health += Time.deltaTime * GameManager.Instance.PlayerWrapper.AttackHandler.healModifier;
+        }
+        health = Mathf.Clamp(health, 0, maxHealth);
+
         healthBar.SetProgress(health);
         if (health <= 0)
         {
@@ -45,5 +52,19 @@ public class Root : MonoBehaviour
     {
         health = maxHealth;
         healParticles.Restart();
+    }
+
+    public override void Interact()
+    {
+        if (GameManager.Instance.currentDimension == GameManager.Dimensions.Attack)
+        {
+            return;
+        }
+        interactDown = true;
+    }
+
+    private void InteractUp()
+    {
+        interactDown = false;
     }
 }
