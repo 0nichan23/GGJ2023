@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnJumpDown;
     public UnityEvent OnAttackDown;
     public UnityEvent OnInteractDown;
+    public UnityEvent TogglePause;
 
 
     private void Start()
@@ -21,8 +23,16 @@ public class InputManager : MonoBehaviour
         actionMap.BasicActions.Jump.started += InvokeOnJumpDown;
         actionMap.BasicActions.Attack.started += InvokeOnAttackDown;
         actionMap.BasicActions.Interact.started += InvokeOnInteractDown;
+
+        actionMap.BasicActions.Pause.started += InvokeTogglePause;
     }
 
+
+
+    public void InvokeTogglePause(InputAction.CallbackContext obj)
+    {
+        TogglePause?.Invoke();
+    }
     public void InvokeOnJumpDown(InputAction.CallbackContext obj)
     {
         OnJumpDown?.Invoke();

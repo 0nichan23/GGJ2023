@@ -7,8 +7,14 @@ public class Enemy : MonoBehaviour
 {
     enum EnemyState
     {
-        Walking,
+        Advancing,
         Attacking
+    }
+
+    public enum EnemyType
+    {
+        Walking,
+        Flying
     }
 
 
@@ -19,6 +25,7 @@ public class Enemy : MonoBehaviour
     public float legsHeight;
     public LayerMask groundLayerMask;
     public ParticleSystem explosionParticle;
+    public EnemyType enemyType;
 
     [HideInInspector] public Root targetRoot;
     private float yVelocity;
@@ -28,7 +35,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        enemyState = EnemyState.Walking;
+        enemyState = EnemyState.Advancing;
         if (GameManager.Instance.currentDimension == GameManager.Dimensions.Heal)
             Hide();
     }
@@ -36,8 +43,13 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (enemyState == EnemyState.Walking)
-            Walk();
+        if (enemyState == EnemyState.Advancing)
+        {
+            if (enemyType == EnemyType.Walking)
+                Walk();
+            else
+                Fly();
+        }
         else
             Attack();
     }
@@ -56,6 +68,24 @@ public class Enemy : MonoBehaviour
         var xVelocity = xDirection * speed;
 
         var velocity = new Vector3(xVelocity, yVelocity, 0);
+
+        transform.position += velocity * Time.deltaTime;
+
+        var distance = positionDifference.magnitude;
+        if (distance < targetRoot.size)
+        {
+            enemyState = EnemyState.Attacking;
+        }
+    }
+
+    void Fly()
+    {
+        if (targetRoot == null)
+            return;
+
+        var positionDifference = targetRoot.transform.position - transform.position;
+        var direction = positionDifference.normalized;
+        var velocity = direction * speed;
 
         transform.position += velocity * Time.deltaTime;
 

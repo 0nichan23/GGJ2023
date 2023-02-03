@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -19,10 +20,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public GameObject healBG;
     public GameObject attackBG;
-    public GameObject deathBG;
+    public GameObject deathScreen;
+
+    public GameObject pauseMenu;
 
     public Transform totem;
     public ParticleSystem totemActivationParticles;
+
+    private bool isPaused = false;
 
     private void Start()
     {
@@ -70,6 +75,45 @@ public class GameManager : MonoSingleton<GameManager>
         Destroy(playerWrapper.gameObject);
         healBG.SetActive(false);
         attackBG.SetActive(false);
-        deathBG.SetActive(true);
+        deathScreen.SetActive(true);
+    }
+
+    public void PlayAgain()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void TogglePause()
+    {
+        if (isPaused)
+            Resume();
+        else
+            Pause();
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        isPaused = false;
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
