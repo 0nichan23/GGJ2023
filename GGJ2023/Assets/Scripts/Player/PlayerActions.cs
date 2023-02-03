@@ -71,6 +71,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StepDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ddb18ad-b435-419a-9386-1826cf78e3cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,28 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c33184e8-ef27-486e-9269-4963d5bba9b1"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StepDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f6ec8e0-9938-4b6c-baca-093db3b13163"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StepDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +282,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_BasicActions_Jump = m_BasicActions.FindAction("Jump", throwIfNotFound: true);
         m_BasicActions_Interact = m_BasicActions.FindAction("Interact", throwIfNotFound: true);
         m_BasicActions_Pause = m_BasicActions.FindAction("Pause", throwIfNotFound: true);
+        m_BasicActions_StepDown = m_BasicActions.FindAction("StepDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +347,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_BasicActions_Jump;
     private readonly InputAction m_BasicActions_Interact;
     private readonly InputAction m_BasicActions_Pause;
+    private readonly InputAction m_BasicActions_StepDown;
     public struct BasicActionsActions
     {
         private @PlayerActions m_Wrapper;
@@ -324,6 +357,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_BasicActions_Jump;
         public InputAction @Interact => m_Wrapper.m_BasicActions_Interact;
         public InputAction @Pause => m_Wrapper.m_BasicActions_Pause;
+        public InputAction @StepDown => m_Wrapper.m_BasicActions_StepDown;
         public InputActionMap Get() { return m_Wrapper.m_BasicActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -348,6 +382,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnPause;
+                @StepDown.started -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnStepDown;
+                @StepDown.performed -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnStepDown;
+                @StepDown.canceled -= m_Wrapper.m_BasicActionsActionsCallbackInterface.OnStepDown;
             }
             m_Wrapper.m_BasicActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -367,6 +404,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @StepDown.started += instance.OnStepDown;
+                @StepDown.performed += instance.OnStepDown;
+                @StepDown.canceled += instance.OnStepDown;
             }
         }
     }
@@ -378,5 +418,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnStepDown(InputAction.CallbackContext context);
     }
 }
