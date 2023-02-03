@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public LayerMask groundLayerMask;
     public ParticleSystem explosionParticle;
     public EnemyType enemyType;
+    [SerializeField] private SpriteRenderer rend;
 
     [HideInInspector] public Root targetRoot;
     private float yVelocity;
@@ -123,10 +124,10 @@ public class Enemy : MonoBehaviour
 
     public void Hide()
     {
-        GetComponent<Renderer>().enabled = false;
+        rend.enabled = false;
     }
     public void Reveal()
     {
-        GetComponent<Renderer>().enabled = true;
+        rend.enabled = true;
     }
 }

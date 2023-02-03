@@ -57,6 +57,7 @@ MonoBehaviour:
     m_Bits: 64
   explosionParticle: {fileID: 2883364112690114078}
   enemyType: 0
+  rend: {fileID: 1649114921669292820}
   targetRoot: {fileID: 0}
 --- !u!58 &5239982632130798435
 CircleCollider2D:
@@ -90,7 +91,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 1.5}
   serializedVersion: 2
   m_Radius: 1.965
 --- !u!1 &2444305189511397041
@@ -118,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2444305189511397041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.52, z: 0}
+  m_LocalPosition: {x: 0, y: 2.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -219,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4912027501906104, guid: 25e2f2d9c0a40f94ba7e56c53b7f2ccc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 4912027501906104, guid: 25e2f2d9c0a40f94ba7e56c53b7f2ccc, type: 3}
       propertyPath: m_LocalPosition.z
