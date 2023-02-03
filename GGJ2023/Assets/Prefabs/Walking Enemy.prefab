@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7022154910650302721}
   - component: {fileID: 2693023885291883735}
   - component: {fileID: 5239982632130798435}
+  - component: {fileID: 8784921093468207079}
   m_Layer: 9
   m_Name: Walking Enemy
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1291497438810353230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1474, y: 1.2321, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3085686119044071788}
@@ -58,6 +59,7 @@ MonoBehaviour:
   explosionParticle: {fileID: 2883364112690114078}
   enemyType: 0
   rend: {fileID: 1649114921669292820}
+  anim: {fileID: 6622827290411128901}
   targetRoot: {fileID: 0}
 --- !u!58 &5239982632130798435
 CircleCollider2D:
@@ -94,6 +96,28 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 1.5}
   serializedVersion: 2
   m_Radius: 1.965
+--- !u!114 &8784921093468207079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291497438810353230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb400abd14b9b644a37d8c5e4b4afb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 30
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealed:
+    m_PersistentCalls:
+      m_Calls: []
+  Ondeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2444305189511397041
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4675810538652606311}
   - component: {fileID: 1649114921669292820}
+  - component: {fileID: 6622827290411128901}
   m_Layer: 9
   m_Name: GFX
   m_TagString: Untagged
@@ -178,6 +203,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6622827290411128901
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444305189511397041}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ed299070e9740843bb295227c753d12, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &3081584040836925908
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerAttackHandler : MonoBehaviour
 {
     [SerializeField] private float attackCoolDown;
+    [SerializeField] private int attackDamage;
     [SerializeField] private float attackRadius;
     [SerializeField] private float attackPositionOffset;
 
@@ -14,6 +15,7 @@ public class PlayerAttackHandler : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.InputManager.OnAttackDown.AddListener(Attack);
+        
         lastAttacked = attackCoolDown * -1;
     }
 
@@ -43,7 +45,7 @@ public class PlayerAttackHandler : MonoBehaviour
                 {
                     continue;
                 }
-                enemy.Explode();
+                enemy.Damageable.TakeDamage(attackDamage);
             }
         }
         ParticleEvents particle = GameManager.Instance.AttackParticleOP.GetPooledObject();

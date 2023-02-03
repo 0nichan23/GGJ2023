@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private int maxHp;
-    public UnityEvent<int> OnTakeDamage;
+    public UnityEvent OnTakeDamage;
     public UnityEvent<int> OnHealed;
     public UnityEvent Ondeath;
 
@@ -17,7 +17,7 @@ public class Damageable : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        OnTakeDamage?.Invoke(amount);
+        OnTakeDamage?.Invoke();
         currentHp -= amount;
         ClampHp();
         if (currentHp <= 0)

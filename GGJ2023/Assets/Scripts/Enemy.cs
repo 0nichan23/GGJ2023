@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -27,6 +24,8 @@ public class Enemy : MonoBehaviour
     public ParticleSystem explosionParticle;
     public EnemyType enemyType;
     [SerializeField] private SpriteRenderer rend;
+    [SerializeField] private Animator anim;
+    private Damageable damageable;
 
     [HideInInspector] public Root targetRoot;
     private float yVelocity;
@@ -34,13 +33,22 @@ public class Enemy : MonoBehaviour
 
     private EnemyState enemyState;
 
+    public Damageable Damageable { get => damageable; }
+
     void Start()
     {
+        damageable = GetComponent<Damageable>();
+        damageable.Ondeath.AddListener(Explode);
+        damageable.OnTakeDamage.AddListener(TakeDamageAnim);
         enemyState = EnemyState.Advancing;
         if (GameManager.Instance.currentDimension == GameManager.Dimensions.Heal)
             Hide();
     }
 
+    private void TakeDamageAnim()
+    {
+        anim.SetTrigger("TakeDamage");
+    }
 
     void Update()
     {
@@ -116,7 +124,7 @@ public class Enemy : MonoBehaviour
         //explosionParticle.Play();
         //explosionParticle.transform.parent = null;
         //Destroy(explosionParticle, explosionParticle.main.duration);
-        ParticleEvents particle =  GameManager.Instance.EnemyDeathOP.GetPooledObject();
+        ParticleEvents particle = GameManager.Instance.EnemyDeathOP.GetPooledObject();
         particle.transform.position = transform.position;
         particle.gameObject.SetActive(true);
         Destroy(gameObject);
