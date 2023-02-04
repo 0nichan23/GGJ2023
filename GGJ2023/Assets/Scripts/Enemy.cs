@@ -145,7 +145,6 @@ public class Enemy : MonoBehaviour
             targetRoot.health -= damage;
             timeLeftToAttack = attackSpeed;
             anim.SetTrigger("Attack");
-            Damagesource.Play();
         }
     }
 
