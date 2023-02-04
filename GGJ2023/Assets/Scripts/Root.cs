@@ -67,10 +67,13 @@ public class Root : Interactable
             return;
         }
         interactDown = true;
+        GameManager.Instance.PlayerWrapper.Anim.SetBool("Heal", true);
     }
 
     private void InteractUp()
     {
         interactDown = false;
+        GameManager.Instance.PlayerWrapper.Anim.SetBool("Heal", false);
+
     }
 }

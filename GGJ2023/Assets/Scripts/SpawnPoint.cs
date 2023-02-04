@@ -26,16 +26,16 @@ public class SpawnPoint : MonoBehaviour
     {
         Debug.Log("Spawning Enemy");
         var spawnedEnemy = Instantiate(spawnedEnemyPrefab, transform.position, Quaternion.identity);
-        spawnedEnemy.targetRoot = reachableRoots.GetRandom();
+        spawnedEnemy.targetRoot = reachableRoots[Random.Range(0, reachableRoots.Length)];
     }
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         foreach (var root in reachableRoots)
         {
             Gizmos.DrawLine(transform.position, root.transform.position);
         }
-    }
+    }*/
 
 }

@@ -2,8 +2,8 @@ public enum FruitType
 {
     ATTACK,
     HEAL,
-    SPEED,
-    A_SPEED
+    A_SPEED,
+    SPEED
 }
 public abstract class Fruit
 {

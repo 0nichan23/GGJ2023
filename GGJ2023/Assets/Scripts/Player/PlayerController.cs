@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SensorHolder groundCheck;
     [SerializeField, Range(0,0.3f)] private float coyoteTime;
+    
 
     private bool coyoteAvailable;
     private bool jumped;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.UiManager.SetMoveSpeedText(movementSpeed.ToString());
         rb = GetComponent<Rigidbody2D>();
         GameManager.Instance.InputManager.OnJumpDown.AddListener(Jump);
         GameManager.Instance.InputManager.OnStepDownDown.AddListener(StartMoveDown);
@@ -46,11 +48,25 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpHeight);
             jumped = true;
+            GameManager.Instance.PlayerWrapper.Anim.SetTrigger("Jump");
         }
     }
     private void SetInputVelocity()
     {
         baseVelocity.x = GameManager.Instance.InputManager.GetMoveDirection().x;
+        if (Mathf.Abs( baseVelocity.x) > 0)
+        {
+            GameManager.Instance.PlayerWrapper.Anim.SetBool("Run", true);
+            GameManager.Instance.PlayerWrapper.Anim.SetFloat("Speed", 1 + movementSpeed/100);
+          
+        }   
+        else
+        {
+            GameManager.Instance.PlayerWrapper.Anim.SetBool("Run", false);
+
+        }
+        
+
     }
     private void MoveController()
     {

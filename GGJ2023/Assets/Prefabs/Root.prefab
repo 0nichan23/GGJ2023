@@ -34,7 +34,7 @@ Transform:
   - {fileID: 1072040360365277491}
   - {fileID: 3977621102494631850}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2533256077431381964
 SpriteRenderer:
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d978f5b93b1376c4e8e47953a852e74e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,7 +104,11 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 3417205220777753076}
   healParticles: {fileID: 3862982526049933556}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   health: 10
+  deathParticle: {fileID: 0}
 --- !u!58 &1780369654697510227
 CircleCollider2D:
   m_ObjectHideFlags: 0

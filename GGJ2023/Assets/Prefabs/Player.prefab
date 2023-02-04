@@ -39,7 +39,7 @@ Transform:
   - {fileID: 26073231487157313}
   - {fileID: 26073231789088894}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &26073230717537439
 MonoBehaviour:
@@ -57,6 +57,7 @@ MonoBehaviour:
   flipper: {fileID: 26073230717537436}
   controller: {fileID: 26073230717537433}
   playerInteractableProximityDetector: {fileID: 26073231578740499}
+  anim: {fileID: 332691072306972503}
 --- !u!114 &26073230717537433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gfx: {fileID: 26073231487157313}
-  movementSpeed: 15
+  movementSpeed: 10
   JumpHeight: 35
   groundCheck: {fileID: 26073231789088895}
   coyoteTime: 0.1
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCoolDown: 0.4
   attackDamage: 10
-  attackRadius: 0.7
+  attackRadius: 0.97
   attackPositionOffset: 0.3
   healModifier: 10
 --- !u!114 &26073230717537436
@@ -285,13 +286,13 @@ MonoBehaviour:
   sensors:
   - Direcion: {x: 0, y: -1}
     Offset: {x: 0, y: 0}
-    Range: 0.6
+    Range: 1
   - Direcion: {x: 0, y: -1}
     Offset: {x: -0.25, y: 0}
-    Range: 0.6
+    Range: 1
   - Direcion: {x: 0, y: -1}
     Offset: {x: 0.25, y: 0}
-    Range: 0.6
+    Range: 1
   hitLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -311,6 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26073231799207149}
   - component: {fileID: 26073231799207148}
+  - component: {fileID: 332691072306972503}
   m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
@@ -385,3 +387,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &332691072306972503
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26073231799207146}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c975abc60de44e4cbe87496f1c5a3e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

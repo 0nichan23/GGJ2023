@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2693023885291883735}
   - component: {fileID: 5239982632130798435}
   - component: {fileID: 8784921093468207079}
+  - component: {fileID: 6635590652636349893}
   m_Layer: 9
   m_Name: Walking Enemy
   m_TagString: Untagged
@@ -59,6 +60,7 @@ MonoBehaviour:
   enemyType: 0
   rend: {fileID: 1649114921669292820}
   anim: {fileID: 6622827290411128901}
+  rootSensor: {fileID: 6635590652636349893}
   targetRoot: {fileID: 0}
 --- !u!58 &5239982632130798435
 CircleCollider2D:
@@ -117,6 +119,22 @@ MonoBehaviour:
   Ondeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6635590652636349893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291497438810353230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ac54704cd0823459c8ca90b45d8863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 20
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &2444305189511397041
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2444305189511397041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.546, z: 0}
+  m_LocalPosition: {x: 0, y: 0.96, z: 0}
   m_LocalScale: {x: 0.87451005, y: 0.87451005, z: 0.87451005}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ASpeedFruit : Fruit
@@ -7,7 +5,9 @@ public class ASpeedFruit : Fruit
     public override void ActivateEffect()
     {
         Debug.Log("attack speed added");
-        host.AttackHandler.AttackCoolDown /= 1.5f;
+        host.AttackHandler.AttackCoolDown -= (0.4f * 0.1f);
+        GameManager.Instance.UiManager.SetAttackSpeedText(host.AttackHandler.AttackCoolDown.ToString("F2"));
+
 
     }
 }

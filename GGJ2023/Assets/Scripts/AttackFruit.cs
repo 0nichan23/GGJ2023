@@ -7,7 +7,8 @@ public class AttackFruit : Fruit
     public override void ActivateEffect()
     {
         Debug.Log("attack damage added");
-        host.AttackHandler.AttackDamage += 5;
+        host.AttackHandler.AttackDamage += 2;
+        GameManager.Instance.UiManager.SetDamageText(host.AttackHandler.AttackDamage.ToString());
     }
 
 }

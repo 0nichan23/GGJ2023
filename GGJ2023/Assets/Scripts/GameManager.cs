@@ -15,6 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private EnemyDeathPool enemyDeathOP;
     [SerializeField] private FruitObjectPool fruitDropOP;
     [SerializeField] private FruitManager fruitManager;
+    [SerializeField] private UiManager uiManager;
     public int DeadRoots;
     public InputManager InputManager { get => inputManager; }
     public PlayerWrapper PlayerWrapper { get => playerWrapper; }
@@ -22,6 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
     public EnemyDeathPool EnemyDeathOP { get => enemyDeathOP; }
     public FruitManager FruitManager { get => fruitManager; }
     public FruitObjectPool FruitDropOP { get => fruitDropOP; }
+    public UiManager UiManager { get => uiManager; }
 
     public Dimensions currentDimension;
 

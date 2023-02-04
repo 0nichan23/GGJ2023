@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,7 +26,9 @@ public class Enemy : MonoBehaviour
     public EnemyType enemyType;
     [SerializeField] private SpriteRenderer rend;
     [SerializeField] private Animator anim;
+    [SerializeField] private RootProximity rootSensor;
     private Damageable damageable;
+    
 
     [HideInInspector] public Root targetRoot;
     private float yVelocity;
@@ -41,9 +44,26 @@ public class Enemy : MonoBehaviour
         damageable.Ondeath.AddListener(Explode);
         damageable.OnTakeDamage.AddListener(TakeDamageAnim);
         enemyState = EnemyState.Advancing;
+     /*   if (ReferenceEquals(targetRoot, null))
+        {
+            GetTargetRoot();
+        }*/
         if (GameManager.Instance.currentDimension == GameManager.Dimensions.Heal)
             Hide();
     }
+
+    private void GetTargetRoot()
+    {
+        if (!ReferenceEquals(rootSensor.GetLegalTargets(), null) && rootSensor.GetLegalTargets().Length <= 0)
+        {
+            targetRoot = null;
+            return;
+        }
+        targetRoot = rootSensor.GetLegalTargets()[UnityEngine.Random.Range(0, rootSensor.GetLegalTargets().Length)];
+    }
+
+
+
 
     private void TakeDamageAnim()
     {
@@ -55,7 +75,7 @@ public class Enemy : MonoBehaviour
         if (enemyState == EnemyState.Advancing)
         {
             if (enemyType == EnemyType.Walking)
-                Walk();
+                Fly();
             else
                 Fly();
         }
@@ -81,7 +101,7 @@ public class Enemy : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
 
         var distance = positionDifference.magnitude;
-        if (distance < targetRoot.size)
+        if (distance < 1f)
         {
             enemyState = EnemyState.Attacking;
         }

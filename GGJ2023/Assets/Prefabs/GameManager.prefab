@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1380409208}
   - component: {fileID: 1238144624}
   - component: {fileID: 1238144627}
+  - component: {fileID: 8644851554311501278}
   m_Layer: 0
   m_Name: ObjectPools
   m_TagString: Untagged
@@ -110,6 +111,21 @@ MonoBehaviour:
   pooledObjects: []
   PrefabToPool: {fileID: 5955837860785993251, guid: ab4c525b400402646b92f5d63827b24f, type: 3}
   NumToPool: 0
+--- !u!114 &8644851554311501278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380409206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c4712eb5e4e354eb2d5ef06a7f0412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  PrefabToPool: {fileID: -7537801049396018232, guid: ff34886346782c74884574c9ee42e3c1, type: 3}
+  NumToPool: 5
 --- !u!1 &1586871687
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +173,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roots: []
   spawnPosition: {fileID: 474845337}
+--- !u!1 &2023942310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2023942311}
+  - component: {fileID: 2023942312}
+  m_Layer: 0
+  m_Name: SpawningManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2023942311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023942310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8165009417635379143}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023942312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023942310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c3507a961b2e0438af18228710444a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpawningIntervals: 20
+  SpawningIntervalsDecrease: 0.5
+  CurrentWave: 1
+  BaseSpawnAmount: 4
+  SpawnIncreaseBetweenWaves: 0.25
 --- !u!1 &8165009417635379141
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,8 +261,9 @@ Transform:
   - {fileID: 8165009418554627563}
   - {fileID: 1380409207}
   - {fileID: 1586871688}
+  - {fileID: 2023942311}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8165009417635379140
 MonoBehaviour:
@@ -207,9 +280,10 @@ MonoBehaviour:
   inputManager: {fileID: 8165009418554627560}
   playerWrapper: {fileID: 0}
   attackParticleOP: {fileID: 1380409208}
-  enemyDeathOP: {fileID: 1238144624}
+  enemyDeathOP: {fileID: 8644851554311501278}
   fruitDropOP: {fileID: 1238144627}
   fruitManager: {fileID: 1586871689}
+  DeadRoots: 0
   currentDimension: 0
   healBG: {fileID: 0}
   attackBG: {fileID: 0}

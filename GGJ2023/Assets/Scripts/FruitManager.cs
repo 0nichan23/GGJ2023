@@ -7,6 +7,11 @@ public class FruitManager : MonoBehaviour
 
     [SerializeField] private List<Root> roots = new List<Root>();
     [SerializeField] private Transform spawnPosition;
+
+    [SerializeField] private Sprite attackSprite;
+    [SerializeField] private Sprite speedSprite;
+    [SerializeField] private Sprite aSpeedSprite;
+    [SerializeField] private Sprite healSprite;
     private float currentTimeWaited;
     private float targetTime;
 
@@ -29,7 +34,9 @@ public class FruitManager : MonoBehaviour
     private void SpawnFruit()
     {
         FruitDrop fruit = Instantiate(GameManager.Instance.FruitDropOP.GetPooledObject(), spawnPosition.position, Quaternion.identity);
-        fruit.CacheFruit(GetFruitFromEnum(GetRandomFruit()));
+        Fruit fruittype = GetFruitFromEnum(GetRandomFruit());
+        fruit.CacheFruit(fruittype,  GetSpriteFromFruiteEnum(fruittype.FruitType));
+
         fruit.gameObject.SetActive(true);
     }
 
@@ -70,14 +77,31 @@ public class FruitManager : MonoBehaviour
                 return new AttackFruit();
             case FruitType.HEAL:
                 return new HealFruit();
-            case FruitType.SPEED:
-                return new SpeedFruit();
             case FruitType.A_SPEED:
                 return new ASpeedFruit();
+            case FruitType.SPEED:
+                return new SpeedFruit();
             default:
                 return null;
         }
     }
 
+
+    private Sprite GetSpriteFromFruiteEnum(FruitType gievnFruit)
+    {
+        switch (gievnFruit)
+        {
+            case FruitType.ATTACK:
+                return attackSprite;
+            case FruitType.HEAL:
+                return healSprite;
+            case FruitType.A_SPEED:
+                return aSpeedSprite;
+            case FruitType.SPEED:
+                return speedSprite;
+            default:
+                return null;
+        }
+    }
 
 }

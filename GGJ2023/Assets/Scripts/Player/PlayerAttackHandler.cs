@@ -20,6 +20,10 @@ public class PlayerAttackHandler : MonoBehaviour
         GameManager.Instance.InputManager.OnAttackDown.AddListener(Attack);
         
         lastAttacked = attackCoolDown * -1;
+        GameManager.Instance.UiManager.SetHealText(healModifier.ToString());
+        GameManager.Instance.UiManager.SetDamageText(attackDamage.ToString());
+        GameManager.Instance.UiManager.SetAttackSpeedText(attackCoolDown.ToString());
+
     }
 
     private void Attack()
@@ -51,9 +55,12 @@ public class PlayerAttackHandler : MonoBehaviour
                 enemy.Damageable.TakeDamage(attackDamage);
             }
         }
-        ParticleEvents particle = GameManager.Instance.AttackParticleOP.GetPooledObject();
-        particle.transform.position = attackCenter;
-        particle.gameObject.SetActive(true);
+        /*ParticleEvents particle = GameManager.Instance.AttackParticleOP.GetPooledObject();
+        particle.transform.position = attackCenter;*/
+        GameManager.Instance.PlayerWrapper.Anim.SetTrigger("Attack");
+        GameManager.Instance.PlayerWrapper.Anim.SetFloat("AttackSpeed", (2 - attackCoolDown));
+
+   /*     particle.gameObject.SetActive(true);*/
     }
 
 

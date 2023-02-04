@@ -124,10 +124,10 @@ TextureImporter:
         serializedVersion: 2
         x: 289
         y: 76
-        width: 537
+        width: 646
         height: 548
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,36 +140,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Foxy_Heal_1
-      rect:
-        serializedVersion: 2
-        x: 841
-        y: 366
-        width: 83
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 500dc415c06c3574aa57906bcfa4ba31
-      internalID: 965640219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Foxy_Heal_2
       rect:
         serializedVersion: 2
         x: 1614
         y: 76
-        width: 492
+        width: 585
         height: 545
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,10 +166,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2851
         y: 76
-        width: 535
+        width: 613
         height: 545
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,10 +187,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4176
         y: 76
-        width: 490
+        width: 556
         height: 545
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,27 +198,6 @@ TextureImporter:
       bones: []
       spriteID: dbdf7a9b3a0a0ab4b8a6c9ccdc69f226
       internalID: 666798312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Foxy_Heal_5
-      rect:
-        serializedVersion: 2
-        x: 4607
-        y: 276
-        width: 134
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd363c0b98a92914385e9521ce03e059
-      internalID: 573894422
       vertices: []
       indices: 
       edges: []
