@@ -38,7 +38,8 @@ public class Root : Interactable
         {
             //Destroy(gameObject);
             OnDeath?.Invoke(this);
-            GameManager.Instance.GameOver();
+            GameManager.Instance.DeadRoot();
+            gameObject.SetActive(false);
         }
     }
 

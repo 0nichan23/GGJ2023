@@ -22,24 +22,12 @@ public class SpawnPoint : MonoBehaviour
         timeToSpawnBar.maxProgress = spawnTime;
     }
 
-    private void Update()
+    public void Spawn()
     {
-        remainingTimeToSpawn -= Time.deltaTime;
-
-        if (remainingTimeToSpawn <= 0)
-        {
-            Spawn();
-            remainingTimeToSpawn = spawnTime * multiplyOverTime.Evaluate(Time.time);
-        }
-        timeToSpawnBar.SetProgress(remainingTimeToSpawn);
-    }
-
-    private void Spawn()
-    {
+        Debug.Log("Spawning Enemy");
         var spawnedEnemy = Instantiate(spawnedEnemyPrefab, transform.position, Quaternion.identity);
         spawnedEnemy.targetRoot = reachableRoots.GetRandom();
     }
-
 
     private void OnDrawGizmos()
     {

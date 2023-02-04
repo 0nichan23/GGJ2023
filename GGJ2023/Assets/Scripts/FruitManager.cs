@@ -10,6 +10,8 @@ public class FruitManager : MonoBehaviour
     private float currentTimeWaited;
     private float targetTime;
 
+    public List<Root> Roots { get => roots; }
+
     private void Update()
     {
         if (targetTime != 0)

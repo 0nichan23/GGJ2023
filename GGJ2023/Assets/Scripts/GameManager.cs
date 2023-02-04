@@ -15,6 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private EnemyDeathPool enemyDeathOP;
     [SerializeField] private FruitObjectPool fruitDropOP;
     [SerializeField] private FruitManager fruitManager;
+    public int DeadRoots;
     public InputManager InputManager { get => inputManager; }
     public PlayerWrapper PlayerWrapper { get => playerWrapper; }
     public PlayerAttackEffectPool AttackParticleOP { get => attackParticleOP; }
@@ -84,6 +85,19 @@ public class GameManager : MonoSingleton<GameManager>
         deathScreen.SetActive(true);
     }
 
+    public void CheckGameOver()
+    {
+        if (DeadRoots >= fruitManager.Roots.Count - 1)
+        {
+            GameOver();
+        }
+    }
+
+    public void DeadRoot()
+    {
+        DeadRoots++;
+        CheckGameOver();
+    }
     public void PlayAgain()
     {
         Scene currentScene = SceneManager.GetActiveScene();

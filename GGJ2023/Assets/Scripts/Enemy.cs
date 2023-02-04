@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     {
         if (targetRoot == null)
             return;
-
+         
         var positionDifference = targetRoot.transform.position - transform.position;
         var xDirection = Mathf.Sign(positionDifference.x);
         var isOnGround = transform.IsOnGround(legsHeight, groundLayerMask);
@@ -116,18 +116,13 @@ public class Enemy : MonoBehaviour
         {
             targetRoot.health -= damage;
             timeLeftToAttack = attackSpeed;
+            anim.SetTrigger("Attack");
         }
     }
 
     public void Explode()
     {
-        //explosionParticle.Play();
-        //explosionParticle.transform.parent = null;
-        //Destroy(explosionParticle, explosionParticle.main.duration);
-        ParticleEvents particle = GameManager.Instance.EnemyDeathOP.GetPooledObject();
-        particle.transform.position = transform.position;
-        particle.gameObject.SetActive(true);
-        Destroy(gameObject);
+        anim.SetTrigger("Die");
     }
 
     public void Hide()

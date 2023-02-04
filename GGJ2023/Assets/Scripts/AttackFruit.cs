@@ -6,6 +6,7 @@ public class AttackFruit : Fruit
 {
     public override void ActivateEffect()
     {
+        Debug.Log("attack damage added");
         host.AttackHandler.AttackDamage += 5;
     }
 

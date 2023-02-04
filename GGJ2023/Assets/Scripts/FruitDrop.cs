@@ -15,5 +15,6 @@ public class FruitDrop : Interactable
     public override void Interact()
     {
         RefFruit.ActivateEffect();
+        gameObject.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ public class SpeedFruit : Fruit
 {
     public override void ActivateEffect()
     {
+        Debug.Log("Movement speed increased");
         host.Controller.MovementSpeed += 3;
     }
 }
