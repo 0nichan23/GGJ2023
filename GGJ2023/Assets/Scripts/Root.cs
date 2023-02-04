@@ -12,6 +12,7 @@ public class Root : Interactable
     public UnityEvent<Root> OnDeath;
 
     [HideInInspector] public float health;
+    [SerializeField] private ParticleSystem deathParticle;
     private bool interactDown;
 
 
@@ -39,6 +40,7 @@ public class Root : Interactable
             //Destroy(gameObject);
             OnDeath?.Invoke(this);
             GameManager.Instance.DeadRoot();
+            Instantiate(deathParticle, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }
