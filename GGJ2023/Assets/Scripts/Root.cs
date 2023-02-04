@@ -13,6 +13,7 @@ public class Root : Interactable
 
     [HideInInspector] public float health;
     [SerializeField] private ParticleSystem deathParticle;
+    [SerializeField] AudioSource source;
     private bool interactDown;
 
 
@@ -68,6 +69,8 @@ public class Root : Interactable
         }
         interactDown = true;
         GameManager.Instance.PlayerWrapper.Anim.SetBool("Heal", true);
+        source.Play();
+
     }
 
     private void InteractUp()

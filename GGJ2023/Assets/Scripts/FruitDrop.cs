@@ -4,6 +4,7 @@ public class FruitDrop : Interactable
 {
     public Fruit RefFruit;
     [SerializeField] private SpriteRenderer rend;
+    [SerializeField] private AudioSource source;
 
     public void CacheFruit(Fruit givenFruit, Sprite givenSprite)
     {
@@ -16,6 +17,7 @@ public class FruitDrop : Interactable
     public override void Interact()
     {
         RefFruit.ActivateEffect();
+        source.Play();
         gameObject.SetActive(false);
     }
 }

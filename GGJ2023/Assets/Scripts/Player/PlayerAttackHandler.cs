@@ -7,6 +7,8 @@ public class PlayerAttackHandler : MonoBehaviour
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackRadius;
     [SerializeField] private float attackPositionOffset;
+    [SerializeField] private AudioSource source;
+
 
     public float healModifier;
 
@@ -59,7 +61,7 @@ public class PlayerAttackHandler : MonoBehaviour
         particle.transform.position = attackCenter;*/
         GameManager.Instance.PlayerWrapper.Anim.SetTrigger("Attack");
         GameManager.Instance.PlayerWrapper.Anim.SetFloat("AttackSpeed", (2 - attackCoolDown));
-
+        source.Play();
    /*     particle.gameObject.SetActive(true);*/
     }
 

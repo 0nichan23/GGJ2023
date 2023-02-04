@@ -27,6 +27,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer rend;
     [SerializeField] private Animator anim;
     [SerializeField] private RootProximity rootSensor;
+    [SerializeField] AudioSource Damagesource;
+    [SerializeField] AudioSource Deathsource;
+    [SerializeField] AudioSource TakeDeathsource;
+
     private Damageable damageable;
     
 
@@ -41,6 +45,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         damageable = GetComponent<Damageable>();
+        damageable.OnTakeDamage.AddListener(PlayGetHitSound);
         damageable.Ondeath.AddListener(Explode);
         damageable.OnTakeDamage.AddListener(TakeDamageAnim);
         enemyState = EnemyState.Advancing;
@@ -62,7 +67,10 @@ public class Enemy : MonoBehaviour
         targetRoot = rootSensor.GetLegalTargets()[UnityEngine.Random.Range(0, rootSensor.GetLegalTargets().Length)];
     }
 
-
+    private void PlayGetHitSound()
+    {
+        TakeDeathsource.Play();
+    }
 
 
     private void TakeDamageAnim()
@@ -137,11 +145,13 @@ public class Enemy : MonoBehaviour
             targetRoot.health -= damage;
             timeLeftToAttack = attackSpeed;
             anim.SetTrigger("Attack");
+            Damagesource.Play();
         }
     }
 
     public void Explode()
     {
+        Deathsource.Play();
         anim.SetTrigger("Die");
     }
 
