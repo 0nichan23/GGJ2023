@@ -85,6 +85,7 @@ public class GameManager : MonoSingleton<GameManager>
         healBG.SetActive(false);
         attackBG.SetActive(false);
         deathScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void CheckGameOver()
@@ -94,7 +95,7 @@ public class GameManager : MonoSingleton<GameManager>
             GameOver();
         }
     }
-
+    
     public void DeadRoot()
     {
         DeadRoots++;
@@ -102,6 +103,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void PlayAgain()
     {
+        
+        Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }

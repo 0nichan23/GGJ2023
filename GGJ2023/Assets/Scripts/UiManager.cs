@@ -11,10 +11,17 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healPowerText;
     [SerializeField] private TextMeshProUGUI moveSpeecText;
     [SerializeField] private TextMeshProUGUI timer;
+    private float timeElapsed;
+
+    private void Start()
+    {
+        timeElapsed = 0f;
+    }
 
     private void Update()
     {
-        timer.text =  "TIMER: " + Time.time.ToString("F1");  
+        timeElapsed += Time.deltaTime;
+        timer.text =  "TIMER: " + timeElapsed.ToString("F1");  
     }
 
     public void SetDamageText(string text)
